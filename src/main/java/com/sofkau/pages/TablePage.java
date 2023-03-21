@@ -7,7 +7,12 @@ import org.openqa.selenium.support.CacheLookup;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TablePage extends CommonActionOnPages{
+    public static List<String> datosIngresados=new ArrayList<>();
+    public static List<String> datosTable=new ArrayList<>();
     @CacheLookup
     @FindBy(xpath = "//div[@class='card mt-4 top-card'][1]")
     private WebElement iconoElement;
@@ -50,6 +55,9 @@ public class TablePage extends CommonActionOnPages{
     }
 
     public void fillMandatoryFields(String nombre, String apellido, String edad, String correo, String salario, String departamento){
+
+        datosIngresados.clear();
+        datosTable.clear();
         typeInto(name,nombre);
         typeInto(lastName,apellido);
         typeInto(email,correo);
@@ -57,6 +65,29 @@ public class TablePage extends CommonActionOnPages{
         typeInto(salary,salario);
         typeInto(department,departamento);
         click(submit);
+        datosIngresados.add(nombre);
+        datosIngresados.add(apellido);
+        datosIngresados.add(edad);
+        datosIngresados.add(correo);
+        datosIngresados.add(salario);
+        datosIngresados.add(departamento);
+        datosTable.add(getText(By.xpath("//div/descendant::*[338]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[339]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[340]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[341]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[342]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[343]")));
+        System.out.println(datosIngresados);
+        System.out.println(datosTable);
 
+    }
+
+    public void datosTabla(){
+        datosTable.add(getText(By.xpath("//div/descendant::*[338]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[339]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[340]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[341]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[342]")));
+        datosTable.add(getText(By.xpath("//div/descendant::*[343]")));
     }
 }

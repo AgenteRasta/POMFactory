@@ -2,8 +2,10 @@ package com.sofkau.pages;
 
 import org.openqa.selenium.*;
 
-public class CommonActionOnPages {
+import java.util.List;
 
+public class CommonActionOnPages {
+    public static List<String> datosIngresados;
     private WebDriver driver;
     public CommonActionOnPages(WebDriver driver){
         this.driver=driver;
